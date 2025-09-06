@@ -63,7 +63,7 @@ export default function Portfolio() {
               </a>
             </nav>
             <Button size="sm" className="hover:scale-105 transition-transform duration-300" asChild>
-              <a href="/resume.txt" download="Mohammed_Vajahad_Resume.txt">
+              <a href="/Vaja resume.pdf" download="Mohammed_Vajahad_Resume.pdf">
                 <Download className="mr-2 h-4 w-4" />
                 Resume
               </a>
