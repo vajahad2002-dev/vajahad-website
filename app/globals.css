@@ -1,0 +1,291 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to lighter, more vibrant color scheme */
+  --background: oklch(0.99 0.01 142); /* Very light greenish background */
+  --foreground: oklch(0.15 0 0); /* Softer dark gray for text */
+  --card: oklch(1 0 0); /* Pure white for cards */
+  --card-foreground: oklch(0.2 0 0); /* Softer dark gray text on cards */
+  --popover: oklch(1 0 0); /* White for popovers */
+  --popover-foreground: oklch(0.2 0 0); /* Softer dark gray text in popovers */
+  --primary: oklch(0.5 0.12 142); /* Softer green for primary actions */
+  --primary-foreground: oklch(1 0 0); /* White text on primary buttons */
+  --secondary: oklch(0.85 0.15 110); /* Lighter lime green for secondary actions */
+  --secondary-foreground: oklch(0.2 0 0); /* Softer dark gray text on secondary buttons */
+  --muted: oklch(0.97 0.01 142); /* Very light greenish for muted elements */
+  --muted-foreground: oklch(0.5 0 0); /* Lighter gray for muted text */
+  --accent: oklch(0.8 0.15 110); /* Lighter lime green for accents */
+  --accent-foreground: oklch(0.15 0 0); /* Dark text on accent elements */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 142); /* Very light green-gray for borders */
+  --input: oklch(1 0 0); /* White for input fields */
+  --ring: oklch(0.7 0.15 110); /* Softer lime green for focus rings */
+  --chart-1: oklch(0.5 0.12 142); /* Green for charts */
+  --chart-2: oklch(0.8 0.15 110); /* Lime green for charts */
+  --chart-3: oklch(0.577 0.245 27.325); /* Red for charts */
+  --chart-4: oklch(0.6 0.15 200); /* Blue for charts */
+  --chart-5: oklch(0.7 0.15 60); /* Yellow for charts */
+  --radius: 0.5rem;
+  --sidebar: oklch(1 0 0); /* White for sidebar */
+  --sidebar-foreground: oklch(0.2 0 0); /* Softer dark gray for sidebar text */
+  --sidebar-primary: oklch(0.5 0.12 142); /* Green for primary sidebar elements */
+  --sidebar-primary-foreground: oklch(1 0 0); /* White text on sidebar primary elements */
+  --sidebar-accent: oklch(0.8 0.15 110); /* Lime green for sidebar accents */
+  --sidebar-accent-foreground: oklch(0.2 0 0); /* Dark gray for sidebar accent text */
+  --sidebar-border: oklch(0.9 0.01 142); /* Light green-gray for sidebar borders */
+  --sidebar-ring: oklch(0.7 0.15 110); /* Lime green for sidebar focus rings */
+}
+
+.dark {
+  --background: oklch(0.08 0.02 142); /* Dark greenish background */
+  --foreground: oklch(0.95 0 0); /* Light text */
+  --card: oklch(0.12 0.02 142); /* Dark green cards */
+  --card-foreground: oklch(0.95 0 0); /* Light text on cards */
+  --popover: oklch(0.12 0.02 142); /* Dark green popovers */
+  --popover-foreground: oklch(0.95 0 0); /* Light text in popovers */
+  --primary: oklch(0.75 0.18 110); /* Bright lime for primary in dark mode */
+  --primary-foreground: oklch(0.08 0.02 142); /* Dark text on primary buttons */
+  --secondary: oklch(0.2 0.05 142); /* Dark green for secondary */
+  --secondary-foreground: oklch(0.95 0 0); /* Light text on secondary */
+  --muted: oklch(0.15 0.02 142); /* Dark muted green */
+  --muted-foreground: oklch(0.7 0 0); /* Gray for muted text */
+  --accent: oklch(0.75 0.18 110); /* Bright lime for accents */
+  --accent-foreground: oklch(0.08 0.02 142); /* Dark text on accents */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.2 0.05 142); /* Dark green borders */
+  --input: oklch(0.15 0.02 142); /* Dark green inputs */
+  --ring: oklch(0.75 0.18 110); /* Bright lime focus rings */
+  --chart-1: oklch(0.75 0.18 110);
+  --chart-2: oklch(0.45 0.15 142);
+  --chart-3: oklch(0.577 0.245 27.325);
+  --chart-4: oklch(0.6 0.15 200);
+  --chart-5: oklch(0.7 0.15 60);
+  --sidebar: oklch(0.1 0.02 142); /* Dark green sidebar */
+  --sidebar-foreground: oklch(0.95 0 0); /* Light sidebar text */
+  --sidebar-primary: oklch(0.75 0.18 110); /* Bright lime for sidebar primary */
+  --sidebar-primary-foreground: oklch(0.08 0.02 142); /* Dark text on sidebar primary */
+  --sidebar-accent: oklch(0.2 0.05 142); /* Dark green for sidebar accents */
+  --sidebar-accent-foreground: oklch(0.95 0 0); /* Light text on sidebar accents */
+  --sidebar-border: oklch(0.2 0.05 142); /* Dark green sidebar borders */
+  --sidebar-ring: oklch(0.75 0.18 110); /* Bright lime sidebar focus rings */
+}
+
+/* Added custom animations and transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px oklch(0.7 0.15 110 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px oklch(0.7 0.15 110 / 0.8), 0 0 30px oklch(0.7 0.15 110 / 0.4);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floating-orbs {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(20px) translateX(10px) rotate(270deg);
+  }
+}
+
+@keyframes pulse-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes color-morph {
+  0% {
+    background-color: oklch(0.8 0.1 110 / 0.1);
+  }
+  33% {
+    background-color: oklch(0.7 0.15 142 / 0.15);
+  }
+  66% {
+    background-color: oklch(0.75 0.12 160 / 0.12);
+  }
+  100% {
+    background-color: oklch(0.8 0.1 110 / 0.1);
+  }
+}
+
+.animated-background {
+  background: linear-gradient(
+    -45deg,
+    oklch(0.97 0.03 142),
+    oklch(0.95 0.04 110),
+    oklch(0.96 0.03 160),
+    oklch(0.98 0.02 120),
+    oklch(0.94 0.05 135),
+    oklch(0.99 0.01 150)
+  );
+  background-size: 600% 600%;
+  animation: gradient-shift 20s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-background::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 80%, oklch(0.8 0.1 110 / 0.15) 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, oklch(0.7 0.15 142 / 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, oklch(0.75 0.12 160 / 0.1) 1.5px, transparent 1.5px);
+  background-size: 60px 60px, 40px 40px, 80px 80px;
+  animation: floating-orbs 25s linear infinite;
+  pointer-events: none;
+}
+
+.animated-background::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, oklch(0.7 0.15 110 / 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-wave 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.floating-element {
+  animation: floating-orbs 15s ease-in-out infinite, color-morph 8s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+  animation-delay: -5s, -2s;
+}
+
+.floating-element:nth-child(3) {
+  animation-delay: -10s, -4s;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
